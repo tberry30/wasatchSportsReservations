@@ -1,0 +1,78 @@
+<div class="main-content">
+
+  <div class="two-by left">
+    <div>
+      <h3>{{ editRenterCtrl.text }}</h3><br>
+      <input type="text" ng-model="editRenterCtrl.renter.name" placeholder="Full Name"><br>
+      <input type="text" ng-model="editRenterCtrl.renter.age" placeholder="Age"><br>
+      <input type="text" ng-model="editRenterCtrl.renter.height" placeholder="Height(in)"><br>
+      <input type="text" ng-model="editRenterCtrl.renter.weight" placeholder="Weight(lbs)"><br>
+
+      <div class="select-style">
+      <select ng-model="editRenterCtrl.renter.skierType">
+        <option value="" disabled>Choose Skier Type</option>
+        <option value="Type I">Type I</option>
+        <option value="Type II">Type II</option>
+        <option value="Type III">Type III</option>
+        <option value="N/A">N/A</option>
+      </select>
+      </div>
+
+      <div class="select-style">
+      <select ng-model="editRenterCtrl.renter.stance">
+        <option value="" disabled>Choose Snowboard Stance</option>
+        <option value="Regular">Regular</option>
+        <option value="Goofy">Goofy</option>
+        <option value="N/A">N/A</option>
+      </select>
+      </div>
+
+      <div class="select-style">
+      <select ng-model="editRenterCtrl.renter.rentalType">
+        <option value="" disabled>Choose Rental Type</option>
+        <option value="Adult Ski Package">Adult Ski Package</option>
+        <option value="Adult Ski Only">Adult Ski Only</option>
+        <option value="Adult Snowboard Package">Adult Snowboard Package</option>
+        <option value="Adult Snowboard Only">Adult Snowboard Only</option>
+        <option value="Junior Ski Package">Junior Ski Package</option>
+        <option value="Junior Ski Only">Junior Ski Only</option>
+        <option value="Junior Snowboard Package">Junior Snowboard Package</option>
+        <option value="Junior Snowboard Only">Junior Snowboard Only</option>
+      </select>
+      </div>
+
+      <div class="select-style">
+      <select ng-model="editRenterCtrl.renter.packageType">
+        <option value="" disabled>Choose Package</option>
+        <option value="Sport">Sport</option>
+        <option value="Performance">Performance</option>
+        <option value="Demo">Demo</option>
+      </select>
+      </div>
+
+      <button ng-click="editRenterCtrl.editRenter(editRenterCtrl.renter)">Edit</button>
+      <button ng-click="editRenterCtrl.removeRenter(editRenterCtrl.renter._id)">Remove</button>
+    </div>
+  </div>
+
+  <div class="two-by right" ng-show="appCtrl.currentUser.role === 'tech' || appCtrl.currentUser.role === 'admin'">
+    <h3>Add Equipment</h3><br>
+    <input ng-model="searchEquip" placeholder="Add equipment to rental ...">
+
+    <div style="height: 320px; overflow: auto;">
+      <div ng-repeat="equip in editRenterCtrl.equipment | filter:searchEquip">
+        <button ng-click="editRenterCtrl.addEquipToRenter(editRenterCtrl.renter._id, equip._id)">
+          <i class="fa fa-plus"></i> {{ equip.ws_id }}
+        </button>
+
+        {{ equip.brand }} {{ equip.model }} {{ equip.size }}
+
+      </div>
+    </div>
+
+  </div>
+
+
+
+<!-- </form> -->
+</div>

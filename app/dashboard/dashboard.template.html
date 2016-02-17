@@ -1,0 +1,36 @@
+<div>
+<h3>{{ dashboardCtrl.text }}</h3>
+
+  <input class="search right" ng-model="dashboardCtrl.search" placeholder="Filter ...">
+  <div class="clearFix"></div>
+
+  <div class="dashRes" ng-repeat="reservation in dashboardCtrl.reservations | filter:dashboardCtrl.search | orderBy: 'dateOut'">
+  <!-- {{ reservation }} -->
+
+    <div class="right">
+      Rental Date: {{ reservation.dateOut | amDateFormat: 'M/D/YYYY' }} |
+      Return Date: {{ reservation.dateIn | amDateFormat: 'M/D/YYYY' }}
+    </div>
+    <div class="right" style="clear: right;">
+      <button ui-sref="view-reservation({id: reservation._id})">View Reservation</button>
+      <button class="check-in" ng-click="dashboardCtrl.addToQueue(reservation._id)">Check In</button>
+    </div>
+
+    {{ reservation.createdBy.firstName}} {{ reservation.createdBy.lastName}}<br>
+    {{ reservation.createdBy.email}}<br><br>
+
+    Renters:
+    <span ng-repeat="renter in reservation.renters">
+      {{ renter.name }}&nbsp;
+      <!-- Age: {{ renter.age }}<br>
+      Weight: {{ renter.weight }} lbs.<br>
+      Height: {{ renter.height }} in.<br>
+      Skier type: {{ renter.skierType }}<br>
+      Snowboard Stance: {{ renter.stance }}<br>
+      Rental Type: {{ renter.rentalType }}<br>
+      Package: {{ renter.packageType }} -->
+    </span>
+    <hr>
+  </div>
+
+</div>

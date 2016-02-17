@@ -1,0 +1,49 @@
+<div>
+  <h3>{{ queueController.text }}</h3><br><br>
+
+  <div ng-if="queueController.reservations.length < 1">
+    There are currently no customers in the queue.
+  </div>
+
+  <div ng-repeat="reservation in queueController.reservations | orderBy:'checkedIn'">
+    <!-- {{ reservation }} -->
+<!--
+    <button ui-sref="view-reservation({id: reservation._id})">View Reservation</button>
+    <button class="remove" ng-click="queueController.removeFromQueue(reservation._id)">Remove from Queue</button> -->
+
+    <div class="left renterNum">
+      {{ reservation.renters.length }}<br>
+      <span style="font-size: 10px; display: inline-block; margin-top: -20px;">renters</span>
+    </div>
+
+    <div class="left">
+      {{ reservation.dateOut | amDateFormat: 'M/D/YYYY' }} | {{ reservation.dateIn | amDateFormat: 'M/D/YYYY' }}<br>
+      {{ reservation.createdBy.firstName}} {{ reservation.createdBy.lastName}} ( {{ reservation.createdBy.email}} )<br><br><br>
+
+      Renters:
+      <span ng-repeat="renter in reservation.renters">
+        {{ renter.name }}&nbsp;
+        <!-- Age: {{ renter.age }}<br>
+        Weight: {{ renter.weight }} lbs.<br>
+        Height: {{ renter.height }} in.<br>
+        Skier type: {{ renter.skierType }}<br>
+        Snowboard Stance: {{ renter.stance }}<br>
+        Rental Type: {{ renter.rentalType }}<br>
+        Package: {{ renter.packageType }} -->
+      </span>
+    </div>
+
+
+    <div class="right" style="clear: right;">
+      <button ui-sref="view-reservation({id: reservation._id})">View Reservation</button>
+      <button class="remove" ng-click="queueController.removeFromQueue(reservation._id)">Remove from Queue</button>
+    </div>
+    <div style="clear: right;" class="right">
+      <time class="red" am-time-ago="reservation.checkedIn"></time>
+    </div>
+
+    <div class="clearFix"></div>
+    <hr>
+  </div>
+
+</div>

@@ -1,0 +1,106 @@
+<div class="main-content">
+
+  <div class="outer" ng-show="reservationCtrl.tab1">
+    <h3>RESERVATION DATES</h3><br><br>
+    <label>Pickup:</label>
+    <input type="text" ng-model="reservationCtrl.dateOut" placeholder="MM/DD/YYYY"><br>
+
+    <label>Return:</label>
+    <input type="text" ng-model="reservationCtrl.dateIn"  placeholder="MM/DD/YYYY"><br>
+
+    <button ng-click="reservationCtrl.forward()">Next</button>
+  </div>
+
+  <!-- <div ng-show="reservationCtrl.tab2">
+    TAB TITLE<br><br>
+    <button ng-click="reservationCtrl.back()">Previous</button>
+    <button ng-click="reservationCtrl.forward()">Next</button>
+  </div> -->
+
+  <div class="outer" ng-show="reservationCtrl.tab2">
+    <div class="two-by left">
+      <h3>ADD RENTER</h3><br>
+      <input type="text" ng-model="reservationCtrl.newRenter.name" placeholder="Full Name"><br>
+      <input type="text" ng-model="reservationCtrl.newRenter.age" placeholder="Age"><br>
+      <input type="text" ng-model="reservationCtrl.newRenter.height" placeholder="Height(in)"><br>
+      <input type="text" ng-model="reservationCtrl.newRenter.weight" placeholder="Weight(lbs)"><br>
+
+      <div class="select-style">
+      <select ng-model="reservationCtrl.newRenter.skierType">
+        <option value="" disabled>Choose Skier Type</option>
+        <option value="Type I">Type I</option>
+        <option value="Type II">Type II</option>
+        <option value="Type III">Type III</option>
+        <option value="N/A">N/A</option>
+      </select>
+      </div>
+
+      <div class="select-style">
+      <select ng-model="reservationCtrl.newRenter.stance">
+        <option value="" disabled>Choose Snowboard Stance</option>
+        <option value="Regular">Regular</option>
+        <option value="Goofy">Goofy</option>
+        <option value="N/A">N/A</option>
+      </select>
+      </div>
+
+      <div class="select-style">
+      <select ng-model="reservationCtrl.newRenter.rentalType">
+        <option value="" disabled>Choose Rental Type</option>
+        <option value="Adult Ski Package">Adult Ski Package</option>
+        <option value="Adult Ski Only">Adult Ski Only</option>
+        <option value="Adult Snowboard Package">Adult Snowboard Package</option>
+        <option value="Adult Snowboard Only">Adult Snowboard Only</option>
+        <option value="Junior Ski Package">Junior Ski Package</option>
+        <option value="Junior Ski Only">Junior Ski Only</option>
+        <option value="Junior Snowboard Package">Junior Snowboard Package</option>
+        <option value="Junior Snowboard Only">Junior Snowboard Only</option>
+      </select>
+      </div>
+
+      <div class="select-style">
+      <select ng-model="reservationCtrl.newRenter.packageType">
+        <option value="" disabled>Choose Package</option>
+        <option value="Sport">Sport</option>
+        <option value="Performance">Performance</option>
+        <option value="Demo">Demo</option>
+      </select>
+      </div>
+
+
+      <button ng-click="reservationCtrl.addRenter(reservationCtrl.newRenter)">Add</button>
+    </div> <!-- 2by left -->
+
+    <div class="two-by right">
+      <h3>RENTERS</h3><br>
+
+      <div ng-if="reservationCtrl.renters.length > 0">
+        <div class="renter" ng-repeat="renter in reservationCtrl.renters">
+          {{ renter.name | uppercase }}<br>
+          <div class="one-third left">
+            Age: {{ renter.age }}<br>
+            Height: {{ renter.height }} in.<br>
+            Weight: {{ renter.weight }} lbs.<br>
+          </div>
+          <div class="two-third left">
+            Skier Type: {{ renter.skierType }}<br>
+            Snowbaord Stance: {{ renter.stance }}<br>
+            Rental Package: {{ renter.rentalType }} | {{ renter.packageType }}
+          </div>
+
+        </div>
+      </div>
+
+    </div> <!-- outer ?\ -->
+    <div class="clearFix"></div>
+
+    <div class="right">
+      <button ng-click="reservationCtrl.back()">Previous</button>
+      <!-- <button type="submit">Create Reservation</button> -->
+      <button ng-click="reservationCtrl.createRes(reservationCtrl.newReservation)">Create Reservation</button>
+    </div>
+
+  </div>
+
+<!-- </form> -->
+</div>

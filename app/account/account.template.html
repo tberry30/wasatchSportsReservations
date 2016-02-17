@@ -1,0 +1,24 @@
+<div>
+  <h3>{{ accountCtrl.text }}</h3><br><br>
+
+  <div>
+    <button class="right" ui-sref="create-reservation">Create Reservation</button>
+
+    Name: {{ appCtrl.currentUser.firstName }} {{ appCtrl.currentUser.lastName }}<br>
+    Username: {{ appCtrl.currentUser.username }}<br>
+    Role: {{ appCtrl.currentUser.role }}<br>
+
+    <br><br>
+    <h3>Reservations</h3><br><br>
+    <div ng-repeat="reservation in accountCtrl.reservations | orderBy:dateOut:true">
+      <a ui-sref="view-reservation({id: reservation._id})">
+        ID: {{ reservation._id }}
+      </a>
+      ( {{ reservation.dateOut | amDateFormat: 'M/D/YYYY' }} - {{ reservation.dateIn | amDateFormat: 'M/D/YYYY' }} )
+
+      <!-- <button ui-sref="view-reservation({id: reservation._id})">VIEW</button> -->
+    </div>
+  </div>
+
+
+</div>

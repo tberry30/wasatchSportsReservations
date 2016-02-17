@@ -1,0 +1,12 @@
+<div>
+  <h3>{{ adminCtrl.text }}</h3>
+
+  <br><br>
+
+  <div ng-repeat="user in adminCtrl.users">
+    {{ user.firstName }} {{ user.lastName }} ({{ user.username }})<br>
+    <button ui-sref="edit-user({id: user._id})">EDIT</button>
+    <hr>
+  </div>
+
+</div>

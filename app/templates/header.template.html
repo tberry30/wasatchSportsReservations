@@ -1,0 +1,42 @@
+<header>
+  <div class="header-container">
+    <div class="logo">
+			<a href="/"><img src="/assets/images/WS Logo4.png" alt=""></a>
+		</div>
+
+    <div class="user-menu right">
+      <span ng-show="appCtrl.currentUser">Hi, {{ appCtrl.currentUser.firstName }}</span>
+
+      <button ng-hide="appCtrl.currentUser" ng-click="appCtrl.login()">SIGN IN</button>
+      <button ng-show="appCtrl.currentUser" ng-click="appCtrl.logout()">LOG OUT</button>
+    </div>
+
+
+    <nav>
+      <!-- <a ui-sref="signup" style="padding-left: 20px;">Sign Up</a>
+      <a ui-sref="login">Login</a>
+      <a ui-sref="profile">View Profile</a> -->
+      <ul>
+        <li><a ui-sref="equipment" style="padding-left: 20px;">View Equipment</a></li>
+        <li><a ui-sref="create">Create Equipment</a></li>
+      </ul>
+    </nav>
+
+
+    <nav>
+      <ul>
+        <li><a ui-sref="home">Home</a></li>
+        <li><a ui-sref="create-account" ng-if="!appCtrl.currentUser.role">Create Account</a></li>
+
+        <li><a ui-sref="account" ng-if="appCtrl.currentUser.role === 'customer'">My Account</a></li>
+
+        <li><a ui-sref="dashboard" ng-if="appCtrl.currentUser.role === 'tech' || appCtrl.currentUser.role === 'admin'"
+          >Reservation Dashboard</a></li>
+        <li><a ui-sref="queue" ng-if="appCtrl.currentUser.role === 'tech' || appCtrl.currentUser.role === 'admin'"
+          >Reservation Queue</a></li>
+
+        <li><a ui-sref="admin" ng-if="appCtrl.currentUser.role === 'admin'">Admin</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>

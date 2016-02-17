@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html ng-app="wasatchSportsRes">
+  <head>
+    <meta charset="utf-8">
+    <title>Wasatch Sports Reservations</title>
+    <link rel="stylesheet" href="./assets/styles/reset.css">
+    <link rel="stylesheet" href="./components/components-font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./components/toastr/toastr.css">
+    <link rel="stylesheet" href="./assets/styles/styles.css">
+  </head>
+  <body ng-controller="AppCtrl as appCtrl">
+
+    <div class="container"> <!-- .container for sticky-footer -->
+      <header ng-include="'./templates/header.template.html'">HEADER</header>
+
+      <div class="main-content">
+        <ui-view></ui-view>
+      </div>
+
+      <div class="push"></div> <!-- .push for sticky-footer -->
+    </div> <!-- end of .container for sticky-footer -->
+
+    <footer class="footer" ng-include="'./templates/footer.template.html'">FOOTER</footer> <!-- .footer for sticky-footer -->
+
+    <login-modal></login-modal>
+    <!-- <div login-dialog ng-if="!isLoginPage"></div> -->
+
+    <!-- SCRIPTS -->
+    <script src="./components/angular/angular.js"></script>
+    <script src="./components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="./components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="./components/angular-messages/angular-messages.js"></script>
+    <script src="./components/jquery/dist/jquery.js"></script>
+    <script src="./components/toastr/toastr.js"></script>
+    <script src="./components/socket-io/socket.io.js"></script>
+
+    <script src="./components/moment/moment.js"></script>
+    <script src="./components/angular-moment/angular-moment.js"></script>
+
+
+    <script src="./app.module.js"></script>
+  	<script src="./app.routes.js"></script>
+
+    <script src="./auth/auth.factory.js"></script>
+    <script src="./auth/authToken.factory.js"></script>
+    <script src="./auth/authInterceptor.factory.js"></script>
+    <script src="./auth/authResolver.factory.js"></script>
+
+    <script src="./app.controller.js"></script>
+    <script src="./home/home.controller.js"></script>
+    <script src="./login/login.controller.js"></script>
+    <script src="./login/login.directive.js"></script>
+    <script src="./admin/admin.controller.js"></script>
+    <script src="./admin/edit.controller.js"></script>
+    <script src="./dashboard/dashboard.controller.js"></script>
+    <script src="./account/account.controller.js"></script>
+    <script src="./account/accountCreate.controller.js"></script>
+    <script src="./reservations/reservation.controller.js"></script>
+    <script src="./reservations/viewReservation.controller.js"></script>
+    <script src="./reservations/editRenter.controller.js"></script>
+    <script src="./queue/socket.factory.js"></script>
+    <script src="./queue/queue.controller.js"></script>
+
+    <script src="./services/user.service.js"></script>
+    <script src="./services/renter.service.js"></script>
+    <script src="./services/reservation.service.js"></script>
+    <script src="./services/equipment.service.js"></script>
+
+
+  </body>
+</html>

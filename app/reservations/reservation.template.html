@@ -1,0 +1,50 @@
+<div>
+  <div class="left">
+    <h3>{{ viewReservationCtrl.text }}</h3> &nbsp;|&nbsp; {{ viewReservationCtrl.reservation._id }}
+  </div>
+
+  <div class="right">
+    {{ viewReservationCtrl.reservation.dateOut | amDateFormat: 'M/D/YYYY' }} -
+    {{ viewReservationCtrl.reservation.dateIn | amDateFormat: 'M/D/YYYY' }}
+  </div>
+  <div class="clearFix"></div>
+
+  <br>
+  <div>
+    {{ viewReservationCtrl.reservation.createdBy.firstName }} {{ viewReservationCtrl.reservation.createdBy.lastName }}<br>
+    {{ viewReservationCtrl.reservation.createdBy.email }}
+  </div>
+  <br>
+
+  <!-- {{ viewReservationCtrl.reservation }} -->
+</div>
+
+<div class="renter" ng-repeat="renter in viewReservationCtrl.reservation.renters">
+  <div class="right">
+    <a ui-sref="edit-renter({id: renter._id, parentRes: viewReservationCtrl.reservation._id})"><i class="fa fa-pencil"></i></a>
+  </div>
+
+  <h4>{{ renter.name | uppercase }}</h4>
+  <div class="two-by left">
+    Age: {{ renter.age }}<br>
+    Height: {{ renter.height }} in.<br>
+    Weight: {{ renter.weight }} lbs.<br>
+  </div>
+  <div class="two-by right">
+    Skier Type: {{ renter.skierType }}<br>
+    Snowbaord Stance: {{ renter.stance }}<br>
+    Rental Package: {{ renter.rentalType }} | {{ renter.packageType }}
+  </div>
+
+  <!-- {{appCtrl.currentUser}} -->
+  <div class="clearFix" ng-show="appCtrl.currentUser.role === 'tech' || appCtrl.currentUser.role === 'admin'">
+    <div ng-show="renter.rentalEquip"><br>
+      Equipment:  {{ renter.rentalEquip.ws_id }} - {{ renter.rentalEquip.brand }} ({{ renter.rentalEquip.size }})
+    </div>
+  </div>
+
+</div>
+
+<div ng-show="appCtrl.currentUser.role === 'tech' || appCtrl.currentUser.role === 'admin'"><br>
+  <button class="right complete" ng-click="viewReservationCtrl.markComplete(viewReservationCtrl.reservation._id)">COMPLETE</button>
+</div>
